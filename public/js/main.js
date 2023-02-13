@@ -72,7 +72,7 @@ function renderizar(data) {
   <p>
     <img style="width: 30px; border-radius: 100%" src="${message.author.nick}">
     <span class="fw-bold text-danger">${message.author.id}</span>
-    <span class="fw-bold text-success">(${message.author.date}): </span>
+    <span class="fw-bold text-success">(${message.date}): </span>
     <span>${message.text}</span>
   </p>
 `;

@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-4 mx-auto">
+    <div class="card mt-5 bg-black text-white rounded">
+      <div class="card-header text-center pt-5">
+        <h1 class="h4 text-white">
+          Login
+        </h1>
+      </div>
+      <div class="card-body">
+        <form action="/auth/login" method="POST">
+          <div class="mb-3">
+            <label for="email">Nombre:</label>
+            <input
+              type="text"
+              class="form-control bg-dark text-white"
+              name="name"
+              placeholder="Nombre"
+              autofocus
+            />
+          </div>
+          <button class="btn btn-success btn-block">
+            Signin
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

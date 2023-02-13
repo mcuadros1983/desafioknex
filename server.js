@@ -10,11 +10,15 @@ const { getMockedItems } = require("./DB/MockApi.js")
 const app = express();
 const server = createServer(app);
 const io = new Server(server);
+const morgan = require("morgan") ;
 const { join } =  require("path");
 const indexRoutes= require("./routes/indexRoutes.js")
+const userRoutes = require("./routes/userRoutes.js")
 const productos = new Contenedor("products");
 const mensajes = new Contenedor("messages");
 const path = require("path")
+const session = require('express-session')
+const MongoStore = require('connect-mongo')
 
 // settings
 app.set("views", join(path.join(__dirname, "views")));
@@ -31,12 +35,29 @@ app.set("view engine", ".hbs");
 
 // middlewares
 app.use(express.urlencoded({ extended: true }));
+app.use(morgan("dev"))
+app.use(
+  session({
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGO_ATLAS,
+      mongoOptions: {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      },
+      ttl: 100,
+    }),
+    secret: 'secreta',
+    resave: false,
+    saveUninitialized: false,
+  })
+)
 
 // static files
 app.use(express.static(join(__dirname, "public")));
 
 // routes
 app.use(indexRoutes);
+app.use(userRoutes);
 
 //Carga de productos
 io.on("connection", async function (socket) {
