@@ -1,10 +1,9 @@
-{{!-- {{#if user}} --}}
   <div class="card">
     <div class="card-body">
-      <form action="/auth/logout" method="GET">
+      <form action="/auth/logout" method="POST">
         <p class="h2">
           BIENVENIDO
-          {{{user}}}
+          {{{user.email}}}
         </p>
         <button class="btn btn-success btn-block">Cerrar
           sesión
@@ -12,4 +11,3 @@
       </form>
     </div>
   </div>
-{{!-- {{/if}} --}}

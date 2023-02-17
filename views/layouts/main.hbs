@@ -18,26 +18,11 @@
 
   </head>
   <body>
-     
-{{#if req.session.name}}
-  <div id="bienvenido"></div>
-  <div class="jumbotron">
-      <div class="form-group">
-          <h1 class="card-title d-flex justify-content-between align-items-center">
-          BIENVENIDO {{{req.session.name}}}
-          </h1>
-      </div>
-  </form>
-  </div>
-{{/if}}
-
 
     <div class="container" style="background: rgb(174, 203, 214);">
       {{{body}}}
     </div>
     
-
-    <script src="js/auth.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/normalizr@3.6.1/dist/normalizr.browser.min.js"></script>
     <script src="js/main.js"></script>
     <script

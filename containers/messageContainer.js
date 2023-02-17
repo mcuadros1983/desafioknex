@@ -32,7 +32,7 @@ class Contenedor {
   }
   async save(obj) {
     try {
-      const docRef = await this.query.doc();
+      const docRef = this.query.doc();
       return await docRef.set(obj);
     } catch (error) {
       return { Error: `No se pudo realizar esta acción`, error };

@@ -11,6 +11,7 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server);
 const morgan = require("morgan") ;
+const passport = require("./config/passport.js") ;
 const { join } =  require("path");
 const indexRoutes= require("./routes/indexRoutes.js")
 const userRoutes = require("./routes/userRoutes.js")
@@ -19,6 +20,9 @@ const mensajes = new Contenedor("messages");
 const path = require("path")
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
+
+//Inizializations
+require("./config/passport.js")
 
 // settings
 app.set("views", join(path.join(__dirname, "views")));
@@ -51,6 +55,8 @@ app.use(
     saveUninitialized: false,
   })
 )
+app.use(passport.initialize());
+app.use(passport.session());
 
 // static files
 app.use(express.static(join(__dirname, "public")));
@@ -58,6 +64,10 @@ app.use(express.static(join(__dirname, "public")));
 // routes
 app.use(indexRoutes);
 app.use(userRoutes);
+
+app.use((req, res, next) => {
+  return res.status(404).render("404");
+});
 
 //Carga de productos
 io.on("connection", async function (socket) {

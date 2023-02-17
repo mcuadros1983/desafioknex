@@ -1,28 +1,30 @@
-<div class="row">
-  <div class="col-md-4 mx-auto">
-    <div class="card mt-5 bg-black text-white rounded">
-      <div class="card-header text-center pt-5">
-        <h1 class="h4 text-white">
-          Login
-        </h1>
-      </div>
-      <div class="card-body">
-        <form action="/auth/login" method="POST">
-          <div class="mb-3">
-            <label for="email">Nombre:</label>
-            <input
-              type="text"
-              class="form-control bg-dark text-white"
-              name="name"
-              placeholder="Nombre"
-              autofocus
-            />
-          </div>
-          <button class="btn btn-success btn-block">
-            Signin
+  <div class="container my-5">
+    <div class="jumbotron">
+      <h1>LOGIN</h1>
+      <br>
+      <form action="/auth/login" method="POST" id="formLogin" class="form" role="form">
+
+        <div class="form-group">
+          <input id="email" name='email' placeholder="email" class="form-control" type="text" required>
+        </div>
+
+        <div class="form-group">
+          <input id="password" name='password' placeholder="password" class="form-control" type="password" required>
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-success my-3">
+            Login
           </button>
-        </form>
+        </div>
+      </form>
+
+      <hr>
+      <div class="text-left">
+        <button class="btn btn-success my-3" onclick="location.href = '/auth/signup'">Ir a Register</button>
       </div>
     </div>
   </div>
-</div>
+
+
+  

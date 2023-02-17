@@ -1,9 +1,7 @@
 const socket = io.connect();
-//const mensajes = new Contenedor("mensajes");
 
 // Recepciono los productos enviados por el servidor
 socket.on("products", function (data) {
-  console.log("ref1", data);
   renderProductList(data);
 });
 
@@ -34,7 +32,6 @@ function addProducts(e) {
 // Escucho los mensajes enviados por el servidor
 socket.on("messages", function (data) {
   console.log("res2", data);
-  //console.log("res", await mensajes.denormalizedMessages(data))
   renderizar(data);
 });
 
@@ -51,9 +48,6 @@ function renderizar(data) {
     chat,
     data.entities
   );
-
-  console.log("res3", JSON.stringify(dataDenormalized).length);
-
   
   const reductionPercentage = Math.floor(
     100 -
